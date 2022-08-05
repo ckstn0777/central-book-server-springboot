@@ -34,9 +34,6 @@ public class Book {
 
     private int price;
 
-    @Column(length = 20)
-    private String category;
-
     private String link;
 }
 
