@@ -1,5 +1,6 @@
 package com.ckstn0777.centralbook.entity.book;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,9 +25,6 @@ public class Book {
     @Column(length = 1024)
     private String description;
 
-    @Column(length = 13)
-    private String isbn;
-
     @Column(length = 24)
     private String publisher;
 
@@ -35,6 +33,18 @@ public class Book {
     private int price;
 
     private String link;
+
+    @Builder
+    public Book(String title, String author, String description, String publisher,
+                String imageUrl, int price, String link) {
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.publisher = publisher;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.link = link;
+    }
 }
 
 
