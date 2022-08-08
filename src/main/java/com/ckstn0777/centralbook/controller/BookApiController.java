@@ -3,11 +3,17 @@ package com.ckstn0777.centralbook.controller;
 import com.ckstn0777.centralbook.dto.BookFormDto;
 import com.ckstn0777.centralbook.entity.book.Book;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import com.ckstn0777.centralbook.service.BookService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -18,14 +24,14 @@ public class BookApiController {
      * 책 저장 API
      */
     @PostMapping("/api/v1/book")
-    public void saveBook(@RequestBody BookFormDto bookFormDto) {
+    public ResponseEntity<?> saveBook(@Validated @RequestBody BookFormDto bookFormDto) {
         Book book = Book.builder()
                         .title(bookFormDto.getTitle())
                         .author(bookFormDto.getAuthor())
                         .description(bookFormDto.getDescription())
                         .build();
 
-        bookService.saveBook(book);
+        return ResponseEntity.ok().body(bookService.saveBook(book));
     }
 
     /**
@@ -33,7 +39,7 @@ public class BookApiController {
      */
     @GetMapping("/api/v1/book")
     public List<Book> getAllBook() {
-        return bookService.findAllBook();
+        throw new RuntimeException();
     }
 
     /**
