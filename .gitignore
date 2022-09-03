@@ -38,3 +38,4 @@ out/
 .prettierIgnore
 
 *.db
+application-oauth.properties

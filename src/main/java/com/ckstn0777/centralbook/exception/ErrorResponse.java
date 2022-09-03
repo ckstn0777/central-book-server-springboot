@@ -6,12 +6,12 @@ import lombok.Setter;
 @Getter @Setter
 public class ErrorResponse {
     private String status; // 상태코드
-    private String errorField; // 필드
-    private String errorMessage; // 에러메시지
+    private String errorName; // 에러네임(ex. UserExistsError, BadRequestError)
+    private String errorMessage; // 에러메시지(ex. Bad Request)
 
-    public ErrorResponse(String status, String errorField, String errorMessage) {
+    public ErrorResponse(String status, String errorName, String errorMessage) {
         this.status = status;
-        this.errorField = errorField;
+        this.errorName = errorName;
         this.errorMessage = errorMessage;
     }
 }

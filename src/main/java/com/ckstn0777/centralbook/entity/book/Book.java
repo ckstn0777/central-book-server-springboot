@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @NoArgsConstructor
 @Getter
-@Table(name = "book")
+@Table(name = "tb_book")
 @Entity
 public class Book {
     @Id
